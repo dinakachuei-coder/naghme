@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Naghmeh Kiumarsi —</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#faf9fb;--card:#fff;--ink:#151316;--muted:#7a7580;--purple:#6d28d9;--pl:#efe7fc;--ps:#a78bfa;--line:#eee7f7;--r:16px;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#131015;--card:#1c1820;--ink:#f3f0f6;--muted:#a79fb0;--purple:#a78bfa;--pl:#241b38;--ps:#8b5cf6;--line:#2a2432}}
+:root[data-theme="dark"]{--bg:#131015;--card:#1c1820;--ink:#f3f0f6;--muted:#a79fb0;--purple:#a78bfa;--pl:#241b38;--ps:#8b5cf6;--line:#2a2432}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Vazirmatn',sans-serif;background:var(--bg);color:var(--ink);min-height:100%;display:flex}
+.side{width:220px;flex-shrink:0;background:var(--card);border-left:1px solid var(--line);padding:20px 14px;position:sticky;top:0;height:100vh;overflow-y:auto}
+.side .logo{display:flex;align-items:center;gap:10px;margin-bottom:22px;padding:0 6px}
+.side .logo .b{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--purple),var(--ps));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+.side .logo h1{font-size:14.5px;margin:0;font-weight:800}
+.nav a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;color:var(--muted);text-decoration:none;font-size:13px;font-weight:600;margin-bottom:3px;cursor:pointer}
+.nav a.active{background:var(--pl);color:var(--purple)}
+.nav a:hover{background:var(--pl);color:var(--purple)}
+.main{flex:1;padding:26px 28px 60px;max-width:1100px}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;flex-wrap:wrap;gap:10px}
+.topbar h2{margin:0;font-size:19px;font-weight:800}
+.pill{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:12.5px;color:var(--muted)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:24px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.kpi .lbl{font-size:12px;color:var(--muted);margin-bottom:8px}
+.kpi .val{font-size:22px;font-weight:800}
+.kpi .sub{font-size:11px;color:var(--purple);margin-top:6px}
+.grid2{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;margin-bottom:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+@media (max-width:900px){.grid2,.grid3{grid-template-columns:1fr}.side{position:fixed;right:0;z-index:5;transform:translateX(100%);transition:.2s}.side.open{transform:none}.main{padding:16px}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.card h3{font-size:13.5px;margin:0 0 14px;font-weight:700}
+.row{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:12.5px}
+.row .name{width:60px;color:var(--muted);flex-shrink:0}
+.track{flex:1;background:var(--pl);border-radius:999px;height:9px;overflow:hidden}
+.fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--ps));border-radius:999px}
+.row .num{width:44px;text-align:left;font-weight:700}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th,td{padding:9px 6px;text-align:right;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:600;font-size:11.5px}
+.tag{padding:3px 9px;border-radius:999px;font-size:10.5px;font-weight:600}
+.tag.yes{background:#e6f8ee;color:#1b9c5b}.tag.no{background:#fdeaea;color:#d1445a}
+.btn{background:var(--purple);color:#fff;border:none;border-radius:10px;padding:11px 18px;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer}
+.btn.ghost{background:var(--pl);color:var(--purple)}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.opt{border:1.5px solid var(--line);border-radius:10px;padding:10px 16px;font-size:12.5px;cursor:pointer;background:var(--card);font-family:inherit}
+.opt.sel{border-color:var(--purple);background:var(--pl);color:var(--purple);font-weight:700}
+.step-title{font-size:12px;color:var(--muted);margin-bottom:10px}
+.field{margin-bottom:16px}
+.field input,.field select{width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;font-family:inherit;font-size:13px;background:var(--bg);color:var(--ink)}
+.hint{font-size:11px;color:var(--muted);margin-top:6px}
+.empty{color:var(--muted);font-size:12.5px;padding:30px 0;text-align:center}
+</style>
+</head>
+<body>
+<div class="side">
+  <div class="logo"><div class="b">NK</div><h1>Naghmeh Kiumarsi</h1></div>
+  <div class="nav" id="nav"></div>
+</div>
+<div class="main" id="main"></div>
+
+<script>
+const REASONS=["قیمت بالا","سایز نامناسب","سلیقه","موجود نبود","نیاز به فکر کردن","چرخ","فقط بازدید"];
+const CHANNELS=["بوتیک","شوروم","آنلاین"];
+const VTYPES=["تنها","دو نفره","خانواده","گروهی"];
+const CTYPES=["جدید","قبلی","VIP"];
+
+const FaNum=['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+function toFaNum(n){ return String(n).split('').map(c=>/[0-9]/.test(c)?FaNum[+c]:c).join(''); }
+function pad2(n){ return n<10?'0'+n:''+n; }
+function jalaliDate(day){ return `${toFaNum(1405)}/${toFaNum(pad2(7))}/${toFaNum(pad2(day))}`; }
+
+function seed(){
+  const d=[];
+  for(let i=0;i<260;i++){
+    const purchased=Math.random()<0.42;
+    const day=Math.floor(Math.random()*30)+1;
+    d.push({
+      id:i, day, date:jalaliDate(day),
+      channel:CHANNELS[Math.floor(Math.random()*3)], customerType:CTYPES[Math.floor(Math.random()*3)],
+      visitType:VTYPES[Math.floor(Math.random()*4)],
+      purchased, items:purchased?(Math.random()<0.66?1:Math.random()<0.7?2:Math.random()<0.7?3:4):0,
+      reason:purchased?null:REASONS[Math.floor(Math.random()*REASONS.length)]
+    });
+  }
+  d.sort((a,b)=>a.day-b.day);
+  return d;
+}
+function sortData(){ data.sort((a,b)=>(a.day||0)-(b.day||0)); }
+let data=[];
+try{ const s=localStorage.getItem('nk_data'); data = s? JSON.parse(s) : seed(); if(!s) localStorage.setItem('nk_data', JSON.stringify(data)); }catch(e){ data=seed(); }
+sortData();
+
+function save(){ try{ localStorage.setItem('nk_data', JSON.stringify(data)); }catch(e){} }
+
+const TABS=[
+  {id:'dashboard', label:'داشبورد'},
+  {id:'entry', label:'ثبت ورودی مشتری'},
+  {id:'customers', label:'تحلیل مشتری'},
+  {id:'channels', label:'مقایسه کانال‌ها'},
+  {id:'table', label:'جدول داده‌ها'},
+];
+let active='dashboard';
+
+function renderNav(){
+  document.getElementById('nav').innerHTML = TABS.map(t=>
+    `<a class="${t.id===active?'active':''}" onclick="go('${t.id}')">${t.label}</a>`
+  ).join('');
+}
+function go(id){ active=id; renderNav(); renderMain(); }
+
+function pct(n,d){ return d? Math.round(n/d*100):0; }
+function fa(n){ return n.toLocaleString('fa-IR'); }
+
+function computeStats(){
+  const total=data.length;
+  const purchased=data.filter(x=>x.purchased).length;
+  const noPurchase=total-purchased;
+  const items=data.reduce((a,x)=>a+x.items,0);
+  const avgItems= purchased? (items/purchased).toFixed(1):0;
+  const setRate= purchased? pct(data.filter(x=>x.purchased&&x.items>=2).length, purchased):0;
+  const byChannel={}; CHANNELS.forEach(c=>{
+    const rows=data.filter(x=>x.channel===c);
+    const p=rows.filter(x=>x.purchased).length;
+    byChannel[c]={visits:rows.length, purchased:p, conv:pct(p, rows.length)};
+  });
+  const byVisit={}; VTYPES.forEach(v=>{
+    const rows=data.filter(x=>x.visitType===v);
+    const p=rows.filter(x=>x.purchased).length;
+    byVisit[v]={visits:rows.length, conv:pct(p, rows.length)};
+  });
+  const byReason={}; REASONS.forEach(r=>byReason[r]=data.filter(x=>x.reason===r).length);
+  const sortedReasons=REASONS.slice().sort((a,b)=>byReason[b]-byReason[a]);
+  const itemDist={1:0,2:0,3:0,4:0};
+  data.filter(x=>x.purchased).forEach(x=>{ const k=Math.min(x.items,4); itemDist[k]++; });
+  return {total,purchased,noPurchase,avgItems,setRate,byChannel,byVisit,byReason,sortedReasons,itemDist};
+}
+
+function bar(name,val,max){ return `<div class="row"><div class="name">${name}</div><div class="track"><div class="fill" style="width:${max?Math.round(val/max*100):0}%"></div></div><div class="num">${val}</div></div>`; }
+
+function renderDashboard(){
+  const s=computeStats();
+  const maxCh=Math.max(...CHANNELS.map(c=>s.byChannel[c].visits),1);
+  const maxV=Math.max(...VTYPES.map(v=>s.byVisit[v].visits),1);
+  const maxR=Math.max(...Object.values(s.byReason),1);
+  return `
+  <div class="topbar"><h2>داشبورد رفتار مشتری</h2><span class="pill">مهر ۱۴۰۵ · داده نمونه</span></div>
+  <div class="kpis">
+    <div class="kpi"><div class="lbl">ورودی مشتری</div><div class="val">${fa(s.total)}</div></div>
+    <div class="kpi"><div class="lbl">خرید انجام‌شده</div><div class="val">${fa(s.purchased)}</div><div class="sub">نرخ تبدیل ${pct(s.purchased,s.total)}٪</div></div>
+    <div class="kpi"><div class="lbl">عدم خرید</div><div class="val">${fa(s.noPurchase)}</div></div>
+    <div class="kpi"><div class="lbl">میانگین آیتم در خرید</div><div class="val">${s.avgItems}</div></div>
+    <div class="kpi"><div class="lbl">نرخ خرید ست</div><div class="val">${s.setRate}٪</div></div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h3>ورودی به تفکیک کانال</h3>${CHANNELS.map(c=>bar(c,s.byChannel[c].visits,maxCh)).join('')}</div>
+    <div class="card"><h3>نرخ تبدیل کانال‌ها</h3>${CHANNELS.map(c=>bar(c,s.byChannel[c].conv+'٪ '.length? s.byChannel[c].conv:0,100)).join('')}</div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h3>نوع همراه مشتری</h3>${VTYPES.map(v=>bar(v,s.byVisit[v].visits,maxV)).join('')}</div>
+    <div class="card"><h3>دلایل عدم خرید (پرتکرارترین)</h3>${s.sortedReasons.slice(0,5).map(r=>bar(r,s.byReason[r],maxR)).join('')}</div>
+  </div>`;
+}
+
+function renderChannels(){
+  const s=computeStats();
+  return `
+  <div class="topbar"><h2>مقایسه کانال‌ها</h2></div>
+  <div class="grid3">
+  ${CHANNELS.map(c=>{ const d=s.byChannel[c]; return `<div class="card"><h3>${c}</h3>
+    <div class="row"><div class="name">ورودی</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="num">${d.visits}</div></div>
+    <div class="row"><div class="name">خرید</div><div class="track"><div class="fill" style="width:${pct(d.purchased,d.visits)}%"></div></div><div class="num">${d.purchased}</div></div>
+    <div class="row"><div class="name">تبدیل</div><div class="track"><div class="fill" style="width:${d.conv}%"></div></div><div class="num">${d.conv}٪</div></div>
+  </div>`; }).join('')}
+  </div>`;
+}
+
+function renderCustomers(){
+  const s=computeStats();
+  const maxR=Math.max(...Object.values(s.byReason),1);
+  return `
+  <div class="topbar"><h2>تحلیل مشتری</h2></div>
+  <div class="grid2">
+    <div class="card"><h3>دلایل عدم خرید (رتبه‌بندی‌شده)</h3>${s.sortedReasons.map((r,i)=>bar(`${i+1}. ${r}`,s.byReason[r],maxR)).join('')}</div>
+    <div class="card"><h3>ترکیب تعداد آیتم در خرید</h3>
+      ${[1,2,3,4].map(k=>bar(k===4?'+۴ آیتم':k+' آیتم', s.itemDist[k], Math.max(...Object.values(s.itemDist),1))).join('')}
+    </div>
+  </div>`;
+}
+
+function renderTable(){
+  const rows=data.slice(0,60);
+  return `
+  <div class="topbar"><h2>جدول داده‌ها</h2><div style="display:flex;align-items:center;gap:10px"><span class="pill">${fa(data.length)} رکورد</span><button class="btn" onclick="go('entry')">+ افزودن ورودی</button></div></div>
+  <div class="card"><table><thead><tr><th>تاریخ</th><th>کانال</th><th>نوع مشتری</th><th>نوع مراجعه</th><th>خرید</th><th>آیتم</th><th>دلیل عدم خرید</th><th></th></tr></thead>
+  <tbody>${rows.map(r=> r.id===editingId ? renderEditRow(r) : `<tr><td>${r.date}</td><td>${r.channel}</td><td>${r.customerType}</td><td>${r.visitType}</td>
+  <td><span class="tag ${r.purchased?'yes':'no'}">${r.purchased?'بله':'خیر'}</span></td><td>${r.items||'—'}</td><td>${r.reason||'—'}</td>
+  <td style="display:flex;gap:6px"><button class="btn ghost" style="padding:5px 10px;font-size:11px" onclick="startEdit(${r.id})">ویرایش</button><button class="btn ghost" style="padding:5px 10px;font-size:11px;color:#d1445a" onclick="deleteRow(${r.id})">حذف</button></td></tr>`).join('')}</tbody></table></div>`;
+}
+function sel(opts,cur,onchg){ return `<select onchange="${onchg}" style="width:100%;padding:5px;border:1.5px solid var(--line);border-radius:7px;font-family:inherit;font-size:11.5px;background:var(--bg);color:var(--ink)">${opts.map(o=>`<option value="${o}" ${o===cur?'selected':''}>${o}</option>`).join('')}</select>`; }
+function renderEditRow(r){
+  const d=editDraft;
+  return `<tr style="background:var(--pl)">
+  <td>${r.date}</td>
+  <td>${sel(CHANNELS,d.channel,"editField('channel',this.value)")}</td>
+  <td>${sel(CTYPES,d.customerType,"editField('customerType',this.value)")}</td>
+  <td>${sel(VTYPES,d.visitType,"editField('visitType',this.value)")}</td>
+  <td>${sel(['بله','خیر'],d.purchased?'بله':'خیر',"editField('purchased',this.value==='بله')")}</td>
+  <td>${d.purchased?sel([1,2,3,4],d.items||1,"editField('items',parseInt(this.value))"):'—'}</td>
+  <td>${!d.purchased?sel(REASONS,d.reason||REASONS[0],"editField('reason',this.value)"):'—'}</td>
+  <td style="display:flex;gap:6px"><button class="btn" style="padding:5px 10px;font-size:11px" onclick="saveEdit()">ذخیره</button><button class="btn ghost" style="padding:5px 10px;font-size:11px" onclick="cancelEdit()">انصراف</button></td>
+  </tr>`;
+}
+let editingId=null, editDraft=null;
+function startEdit(id){ editingId=id; editDraft={...data.find(x=>x.id===id)}; renderMain(); }
+function editField(k,v){ editDraft[k]=v; if(k==='purchased'){ if(v){editDraft.reason=null; if(!editDraft.items) editDraft.items=1;} else {editDraft.items=0; if(!editDraft.reason) editDraft.reason=REASONS[0];} } renderMain(); }
+function saveEdit(){
+  const i=data.findIndex(x=>x.id===editingId);
+  if(i>-1) data[i]={...data[i],...editDraft};
+  save(); editingId=null; editDraft=null; renderMain();
+}
+function cancelEdit(){ editingId=null; editDraft=null; renderMain(); }
+function deleteRow(id){
+  data=data.filter(x=>x.id!==id);
+  save();
+  renderMain();
+}
+
+let entryState={day:null, channel:null, visitType:null, customerType:null, purchased:null, items:null, reason:null, step:1};
+function renderEntry(){
+  const e=entryState;
+  let body='';
+  if(e.step===1) body=`<div class="step-title">۱ / ۶ — روز مراجعه (مهر ۱۴۰۵)</div><div class="opts">${Array.from({length:30},(_,i)=>i+1).map(n=>`<div class="opt ${e.day===n?'sel':''}" style="min-width:34px;text-align:center;padding:8px" onclick="setEntry('day',${n})">${toFaNum(n)}</div>`).join('')}</div>`;
+  else if(e.step===2) body=`<div class="step-title">۲ / ۶ — کانال ورود</div><div class="opts">${CHANNELS.map(c=>`<div class="opt ${e.channel===c?'sel':''}" onclick="setEntry('channel','${c}')">${c}</div>`).join('')}</div>`;
+  else if(e.step===3) body=`<div class="step-title">۳ / ۶ — نوع مراجعه</div><div class="opts">${VTYPES.map(v=>`<div class="opt ${e.visitType===v?'sel':''}" onclick="setEntry('visitType','${v}')">${v}</div>`).join('')}</div>`;
+  else if(e.step===4) body=`<div class="step-title">۴ / ۶ — وضعیت مشتری</div><div class="opts">${CTYPES.map(c=>`<div class="opt ${e.customerType===c?'sel':''}" onclick="setEntry('customerType','${c}')">${c}</div>`).join('')}</div>`;
+  else if(e.step===5) body=`<div class="step-title">۵ / ۶ — نتیجه مراجعه</div>
+    <div class="opts"><div class="opt ${e.purchased===true?'sel':''}" onclick="setEntry('purchased',true)">خرید کرد</div><div class="opt ${e.purchased===false?'sel':''}" onclick="setEntry('purchased',false)">خرید نکرد</div></div>
+    ${e.purchased===true?`<div class="step-title">تعداد آیتم</div><div class="opts">${[1,2,3,4].map(n=>`<div class="opt ${e.items===n?'sel':''}" onclick="setEntry('items',${n})">${n===4?'+۴':n}</div>`).join('')}</div>`:''}
+    ${e.purchased===false?`<div class="step-title">دلیل عدم خرید</div><div class="opts">${REASONS.map(r=>`<div class="opt ${e.reason===r?'sel':''}" onclick="setEntry('reason','${r}')">${r}</div>`).join('')}</div>`:''}`;
+  else body=`<div class="step-title">۶ / ۶ — ثبت نهایی</div><div class="hint">روز: ${jalaliDate(e.day)} · کانال: ${e.channel} · مراجعه: ${e.visitType} · مشتری: ${e.customerType} · نتیجه: ${e.purchased?'خرید کرد':'خرید نکرد'}</div>`;
+
+  const canNext = (e.step===1&&e.day)||(e.step===2&&e.channel)||(e.step===3&&e.visitType)||(e.step===4&&e.customerType)||(e.step===5&&e.purchased!==null&&(e.purchased===false?e.reason:e.items));
+  return `
+  <div class="topbar"><h2>ثبت ورودی مشتری</h2></div>
+  <div class="card" style="max-width:520px">
+    ${body}
+    <div style="display:flex;gap:10px;margin-top:20px">
+      ${e.step>1?`<button class="btn ghost" onclick="entryBack()">بازگشت</button>`:''}
+      ${e.step<6?`<button class="btn" ${canNext?'':'disabled style="opacity:.4"'} onclick="entryNext()">ادامه</button>`:`<button class="btn" onclick="entrySubmit()">ثبت مراجعه</button>`}
+    </div>
+  </div>`;
+}
+function setEntry(k,v){ entryState[k]=v; renderMain(); }
+function entryNext(){ entryState.step++; renderMain(); }
+function entryBack(){ entryState.step--; renderMain(); }
+function entrySubmit(){
+  const e=entryState;
+  data.push({id:Date.now(), day:e.day, date:jalaliDate(e.day), channel:e.channel, customerType:e.customerType, visitType:e.visitType, purchased:!!e.purchased, items:e.purchased?e.items:0, reason:e.purchased?null:e.reason});
+  sortData();
+  save();
+  entryState={day:null,channel:null,visitType:null,customerType:null,purchased:null,items:null,reason:null,step:1};
+  go('dashboard');
+}
+
+function renderMain(){
+  const m=document.getElementById('main');
+  if(active==='dashboard') m.innerHTML=renderDashboard();
+  else if(active==='entry') m.innerHTML=renderEntry();
+  else if(active==='customers') m.innerHTML=renderCustomers();
+  else if(active==='channels') m.innerHTML=renderChannels();
+  else if(active==='table') m.innerHTML=renderTable();
+}
+renderNav(); renderMain();
+</script>
+</body>
+</html>
